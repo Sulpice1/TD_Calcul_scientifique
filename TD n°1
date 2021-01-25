@@ -38,3 +38,17 @@ def somme_22(i,j,A,x):
 L,U = doolittle(A)
 print("verif : ","\n",A - np.dot(L,U))
 
+
+""" Cela me renvoie :
+Traceback (most recent call last):
+  File "F:/Cours/IG3/Calcul scientifique/Programme/venv/ESGTcsipy.py", line 96, in <module>
+    L,U = doolittle(A)
+  File "F:/Cours/IG3/Calcul scientifique/Programme/venv/ESGTcsipy.py", line 81, in doolittle
+    U[i-1,j-1] = a[i-1,j-1] - somme_21(i,j,L,U)
+  File "F:/Cours/IG3/Calcul scientifique/Programme/venv/ESGTcsipy.py", line 32, in somme_21
+    s = s + A[i,a]*x[a,j]
+IndexError: index 4 is out of bounds for axis 1 with size 4
+
+Process finished with exit code 1
+
+"""
