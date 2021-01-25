@@ -1,0 +1,40 @@
+def doolittle(a):
+    n = len(a)
+    L = np.eye(n)
+    U = np.zeros_like(A)
+    somme = 0.0
+
+    for i in range(1,n):
+        for j in range(i,n+1):
+            U[i-1,j-1] = a[i-1,j-1] - somme_21(i,j,L,U)
+
+        for j in range(i+1,n+1):
+            print("j:",j)
+            L[j-1,i-1] = (1/U[i,i])*(a[j,i]) - somme_22(i,j,L,U)
+
+        for k in range(1,n-1):
+            somme = somme + (L[n-1,k]*U[k,n-1])
+    U[n-1,n-1] = a[n-1,n-1] - somme
+
+    print("Matrice U : ","\n", U)
+    print("Matrice L :","\n", L)
+
+    return L,U
+#======fonction========
+
+def somme_21(i,j,A,x):
+    s = 0.0
+    for a in range(i):
+        s = s + A[i,a]*x[a,j]
+    return s
+
+def somme_22(i,j,A,x):
+    s = 0.0
+    for a in range(i):
+        s = s + A[a,i]*x[j,a]
+    return s
+    
+#===============================
+L,U = doolittle(A)
+print("verif : ","\n",A - np.dot(L,U))
+
